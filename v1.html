@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRB Printing | 3D Printing & CAD Engineering</title>
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --card-bg: #0d0d0d;
+            --card-border: #1f1f1f;
+            --neon-red: #ff003c;
+            --neon-red-glow: rgba(255, 0, 60, 0.4);
+            --text-main: #f5f5f5;
+            --text-muted: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(255, 0, 60, 0.15) 0%, transparent 70%),
+                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        header {
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            border-bottom: 1px solid var(--card-border);
+            position: relative;
+        }
+
+        .brand-tag {
+            color: var(--neon-red);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        h1 span {
+            color: var(--neon-red);
+            text-shadow: 0 0 15px var(--neon-red-glow);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--neon-red);
+            color: #ffffff;
+            padding: 0.9rem 2.2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px var(--neon-red-glow);
+            transition: all 0.2s ease;
+            border: 1px solid var(--neon-red);
+        }
+
+        .btn:hover {
+            background-color: #d60032;
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--neon-red) 0%, transparent 100%);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--neon-red);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background-color: #111111;
+            display: block;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1.2rem;
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
+            max-width: 650px;
+            margin-top: 1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            background-color: #050505;
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--neon-red);
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+        }
+
+        button {
+            background-color: var(--neon-red);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--neon-red-glow);
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #d60032;
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="brand-tag">// BRB PRINTING PROTOCOL //</span>
+        <h1>Precision <span>3D Printing</span> & CAD</h1>
+        <p class="subtitle">Additive manufacturing, 3D scanning, and CAD reverse engineering engineered for peak strength and accuracy.</p>
+        <a href="#contact" class="btn">Start Your Project</a>
+    </header>
+
+    <div class="container">
+        <section id="work">
+            <div class="section-header">
+                <h2>Capabilities & Work Showcase</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="grid">
+                
+                <!-- Project 1 -->
+                <div class="card">
+                    <img src="project1.jpg" alt="Functional Engineering Parts" class="card-img">
+                    <div class="card-content">
+                        <h3>Functional End-Use Components</h3>
+                        <p>High-temp and impact-resistant engineering polymers engineered to exact mechanical tolerances.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card">
+                    <img src="project2.jpg" alt="3D Scanning & Reverse Engineering" class="card-img">
+                    <div class="card-content">
+                        <h3>Reverse Engineering & CAD</h3>
+                        <p>3D scanning and CAD redesign to recreate, optimize, or reproduce discontinued components.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card">
+                    <img src="project3.jpg" alt="Rapid Prototyping Batch" class="card-img">
+                    <div class="card-content">
+                        <h3>Rapid Prototyping</h3>
+                        <p>Fast-turnaround functional prototypes and short-run production batches.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" style="margin-top: 5rem;">
+            <div class="section-header">
+                <h2>Request a Quote</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Have a model ready or need a custom part designed? Send your project details below:</p>
+            
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="text" name="name" placeholder="Your Name / Business" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <textarea name="message" rows="5" placeholder="Project specs (material preference, quantity, functional requirements)..." required></textarea>
+                <button type="submit">Submit Project Specs</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        &copy; BRB Printing. All rights reserved.
+    </footer>
+
+</body>
+</html>
