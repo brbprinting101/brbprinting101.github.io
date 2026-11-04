@@ -137,40 +137,13 @@
             transform: translateY(-3px);
         }
 
-        .img-container {
-            width: 100%;
-            height: 220px;
-            background-color: #121212;
-            background-image: radial-gradient(var(--card-border) 1px, transparent 0);
-            background-size: 10px 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border-bottom: 1px solid var(--card-border);
-            overflow: hidden;
-        }
-
         .card-img {
             width: 100%;
-            height: 100%;
+            height: 220px;
             object-fit: cover;
+            background-color: #111111;
             display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .fallback-text {
-            color: var(--neon-red);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            border: 1px solid var(--neon-red);
-            padding: 0.4rem 0.8rem;
-            border-radius: 3px;
-            background: rgba(255, 0, 60, 0.05);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .card-content {
@@ -265,10 +238,7 @@
                 
                 <!-- Project 1 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 01</span>
-                        <img src="project1.jpg.jpeg" alt="Functional Engineering Parts" class="card-img" onerror="this.onerror=null; this.src='project1.jpeg';">
-                    </div>
+                    <img src="project1.jpg" alt="Functional Engineering Parts" class="card-img">
                     <div class="card-content">
                         <h3>Functional End-Use Components</h3>
                         <p>High-temp and impact-resistant engineering polymers engineered to exact mechanical tolerances.</p>
@@ -277,10 +247,7 @@
 
                 <!-- Project 2 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 02</span>
-                        <img src="project2.jpg.jpeg" alt="3D Scanning & Reverse Engineering" class="card-img" onerror="this.onerror=null; this.src='project2.jpeg';">
-                    </div>
+                    <img src="project2.jpg" alt="3D Scanning & Reverse Engineering" class="card-img">
                     <div class="card-content">
                         <h3>Reverse Engineering & CAD</h3>
                         <p>3D scanning and CAD redesign to recreate, optimize, or reproduce discontinued components.</p>
@@ -289,10 +256,7 @@
 
                 <!-- Project 3 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 03</span>
-                        <img src="project3.jpg.jpeg" alt="Rapid Prototyping Batch" class="card-img" onerror="this.onerror=null; this.src='project3.jpeg';">
-                    </div>
+                    <img src="project3.jpg" alt="Rapid Prototyping Batch" class="card-img">
                     <div class="card-content">
                         <h3>Rapid Prototyping</h3>
                         <p>Fast-turnaround functional prototypes and short-run production batches.</p>
@@ -301,10 +265,7 @@
 
                 <!-- Project 4 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 04</span>
-                        <img src="project4.jpg.jpeg" alt="Custom Tooling & Jigs" class="card-img" onerror="this.onerror=null; this.src='project4.jpeg';">
-                    </div>
+                    <img src="project4.jpg" alt="Custom Tooling & Jigs" class="card-img">
                     <div class="card-content">
                         <h3>Custom Tooling & Jigs</h3>
                         <p>Precision manufacturing aids and shop fixtures designed for durability and repetitive use.</p>
@@ -313,10 +274,7 @@
 
                 <!-- Project 5 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 05</span>
-                        <img src="project5.jpg.jpeg" alt="Carbon Composite Print" class="card-img" onerror="this.onerror=null; this.src='project5.jpeg';">
-                    </div>
+                    <img src="project5.jpg" alt="Carbon Composite Print" class="card-img">
                     <div class="card-content">
                         <h3>Carbon Composite Builds</h3>
                         <p>Carbon-fiber reinforced polymer components offering high structural rigidity and light weight.</p>
@@ -325,10 +283,7 @@
 
                 <!-- Project 6 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 06</span>
-                        <img src="project6.jpg.jpeg" alt="Flexible TPU Part" class="card-img" onerror="this.onerror=null; this.src='project6.jpeg';">
-                    </div>
+                    <img src="project6.jpg" alt="Flexible TPU Part" class="card-img">
                     <div class="card-content">
                         <h3>Flexible TPU Seals & Dampers</h3>
                         <p>Custom elastomeric gaskets, dampeners, and wear-resistant protective covers.</p>
@@ -337,10 +292,7 @@
 
                 <!-- Project 7 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 07</span>
-                        <img src="project7.jpg.jpeg" alt="Automotive Accessories" class="card-img" onerror="this.onerror=null; this.src='project7.jpeg';">
-                    </div>
+                    <img src="project7.jpg" alt="Automotive Accessories" class="card-img">
                     <div class="card-content">
                         <h3>Custom Automotive Components</h3>
                         <p>UV and weather-resistant ASA components customized for automotive and transport fittings.</p>
@@ -349,10 +301,7 @@
 
                 <!-- Project 8 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 08</span>
-                        <img src="project8.jpg.jpeg" alt="Precision Threaded Inserts" class="card-img" onerror="this.onerror=null; this.src='project8.jpeg';">
-                    </div>
+                    <img src="project8.jpg" alt="Precision Threaded Inserts" class="card-img">
                     <div class="card-content">
                         <h3>Heat-Set Insert Assemblies</h3>
                         <p>Multi-part functional assemblies fitted with brass heat-set inserts for robust mechanical fastening.</p>
@@ -361,10 +310,7 @@
 
                 <!-- Project 9 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 09</span>
-                        <img src="project9.jpg.jpeg" alt="High Temp ASA Print" class="card-img" onerror="this.onerror=null; this.src='project9.jpeg';">
-                    </div>
+                    <img src="project9.jpg" alt="High Temp ASA Print" class="card-img">
                     <div class="card-content">
                         <h3>High-Temperature Components</h3>
                         <p>Durable technical prints designed to operate reliably under extreme thermal conditions.</p>
@@ -373,10 +319,7 @@
 
                 <!-- Project 10 -->
                 <div class="card">
-                    <div class="img-container">
-                        <span class="fallback-text">Part Preview 10</span>
-                        <img src="project10.jpg.jpeg" alt="3D Scan to CAD Model" class="card-img" onerror="this.onerror=null; this.src='project10.jpeg';">
-                    </div>
+                    <img src="project10.jpg" alt="3D Scan to CAD Model" class="card-img">
                     <div class="card-content">
                         <h3>Optical 3D Scanning & Modeling</h3>
                         <p>High-resolution mesh capture to solid CAD modeling for accurate component reproduction.</p>
