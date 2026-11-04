@@ -4,59 +4,307 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BRB Printing | 3D Printing & CAD Engineering</title>
-    <!-- Tailwind CSS for utility styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'neon-red': '#ff003c',
-                        'neon-dark': '#0d0d0d',
-                        'neon-border': '#1f1f1f',
-                        'bg-dark': '#050505',
-                    },
-                    boxShadow: {
-                        'neon': '0 0 15px rgba(255, 0, 60, 0.4)',
-                        'neon-lg': '0 0 30px rgba(255, 0, 60, 0.6)',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        /* Base styles and dark futuristic background pattern */
+        /* CSS Variables */
+        :root {
+            --bg-dark: #050505;
+            --card-bg: #0d0d0d;
+            --card-border: #1f1f1f;
+            --neon-red: #ff003c;
+            --neon-glow: rgba(255, 0, 60, 0.4);
+            --text-main: #f5f5f5;
+            --text-muted: #999999;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #050505;
-            color: #f5f5f5;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
             background-image: 
                 radial-gradient(circle at 50% 0%, rgba(255, 0, 60, 0.15) 0%, transparent 70%),
                 linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
             background-size: 100% 100%, 40px 40px, 40px 40px;
+            min-height: 100vh;
         }
 
-        /* 3D Perspective and Transform rules */
-        .perspective-container {
-            perspective: 1000px;
+        /* Header */
+        header {
+            padding: 5rem 1.5rem 3.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--card-border);
         }
 
-        .card-3d {
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-            transform-style: preserve-3d;
+        .brand-tag {
+            color: var(--neon-red);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+            text-shadow: 0 0 10px var(--neon-glow);
         }
 
-        .card-3d:hover {
-            transform: translateY(-6px) rotateX(3deg) rotateY(-2deg);
-            border-color: #ff003c;
-            box-shadow: 0 15px 35px rgba(255, 0, 60, 0.25);
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
         }
 
-        /* Pure CSS 3D Cube Animation */
-        .cube-wrapper {
-            width: 90px;
-            height: 90px;
+        h1 span {
+            color: var(--neon-red);
+            text-shadow: 0 0 20px var(--neon-glow);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--neon-red);
+            color: #ffffff;
+            padding: 0.9rem 2.2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px var(--neon-glow);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            border: 1px solid var(--neon-red);
+        }
+
+        .btn:hover {
+            background-color: #d60032;
+            transform: translateY(-2px);
+        }
+
+        /* Container & Section Headings */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .section-line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--neon-red) 0%, transparent 100%);
+        }
+
+        /* About Section */
+        .about-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--neon-red);
+            border-radius: 8px;
+            padding: 2.25rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .about-box p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-box p strong {
+            color: var(--text-main);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .highlight-item {
+            background: #080808;
+            padding: 1.25rem;
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
+        }
+
+        .highlight-item h4 {
+            color: var(--neon-red);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-item p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Industries Section */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .industry-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.75rem;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .industry-card:hover {
+            border-color: var(--neon-red);
+            transform: translateY(-3px);
+        }
+
+        .industry-card h3 {
+            color: var(--neon-red);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .industry-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        /* Work Showcase Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--neon-red);
+            transform: translateY(-4px);
+        }
+
+        /* Image styling with CSS fallback when photo is missing */
+        .card-img-wrapper {
+            width: 100%;
+            height: 200px;
+            background-color: #111111;
+            position: relative;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .img-fallback {
+            position: absolute;
+            color: var(--neon-red);
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid var(--neon-red);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            background: rgba(255, 0, 60, 0.08);
+            pointer-events: none;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        /* 3D Holographic Cube animation (Pure CSS) */
+        .holo-viewport {
+            background: #080808;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 800px;
+        }
+
+        .holo-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1.25rem;
+            font-size: 0.75rem;
+            color: var(--neon-red);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .cube-3d {
+            width: 80px;
+            height: 80px;
             position: relative;
             transform-style: preserve-3d;
             animation: spinCube 10s infinite linear;
@@ -69,327 +317,337 @@
 
         .cube-face {
             position: absolute;
-            width: 90px;
-            height: 90px;
-            border: 2px solid #ff003c;
-            background: rgba(255, 0, 60, 0.1);
-            box-shadow: inset 0 0 12px rgba(255, 0, 60, 0.3);
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--neon-red);
+            background: rgba(255, 0, 60, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: #ff003c;
-            letter-spacing: 1px;
+            font-size: 0.7rem;
+            color: var(--neon-red);
+            font-weight: bold;
         }
 
-        .face-front  { transform: rotateY(0deg) translateZ(45px); }
-        .face-back   { transform: rotateY(180deg) translateZ(45px); }
-        .face-right  { transform: rotateY(90deg) translateZ(45px); }
-        .face-left   { transform: rotateY(-90deg) translateZ(45px); }
-        .face-top    { transform: rotateX(90deg) translateZ(45px); }
-        .face-bottom { transform: rotateX(-90deg) translateZ(45px); }
+        .face-front  { transform: rotateY(0deg) translateZ(40px); }
+        .face-back   { transform: rotateY(180deg) translateZ(40px); }
+        .face-right  { transform: rotateY(90deg) translateZ(40px); }
+        .face-left   { transform: rotateY(-90deg) translateZ(40px); }
+        .face-top    { transform: rotateX(90deg) translateZ(40px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(40px); }
 
-        /* Laser Scan Line Effect */
         .laser-sweep {
             position: absolute;
             left: 0;
             right: 0;
             height: 2px;
-            background: #ff003c;
-            box-shadow: 0 0 15px 3px #ff003c;
-            animation: sweepLaser 3s ease-in-out infinite alternate;
+            background: var(--neon-red);
+            box-shadow: 0 0 12px var(--neon-red);
+            animation: sweep 3s ease-in-out infinite alternate;
         }
 
-        @keyframes sweepLaser {
-            0% { top: 10%; opacity: 0.3; }
-            50% { opacity: 0.9; }
-            100% { top: 90%; opacity: 0.3; }
+        @keyframes sweep {
+            0% { top: 10%; opacity: 0.2; }
+            50% { opacity: 0.8; }
+            100% { top: 90%; opacity: 0.2; }
+        }
+
+        /* Form */
+        form {
+            display: grid;
+            gap: 1.2rem;
+            background-color: var(--card-bg);
+            padding: 2.25rem;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.85rem;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            background-color: #050505;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--neon-red);
+        }
+
+        button {
+            background-color: var(--neon-red);
+            color: white;
+            padding: 0.95rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #d60032;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            header { padding-top: 3rem; }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- HEADER SECTION -->
-    <header class="py-20 px-6 text-center border-b border-neon-border relative">
-        <span class="text-neon-red text-xs md:text-sm font-bold tracking-widest uppercase block mb-3 drop-shadow-[0_0_8px_rgba(255,0,60,0.6)]">
-            // BRB PRINTING PROTOCOL //
-        </span>
-        <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-4">
-            Precision <span class="text-neon-red drop-shadow-[0_0_15px_rgba(255,0,60,0.8)]">3D Printing</span> & CAD
-        </h1>
-        <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-8 font-normal">
-            Additive manufacturing, 3D scanning, and CAD reverse engineering engineered with toolroom tolerances for maximum strength and precision.
-        </p>
-        <a href="#contact" class="inline-block bg-neon-red text-white py-3.5 px-8 rounded font-extrabold text-sm uppercase tracking-wider shadow-neon hover:bg-red-700 hover:shadow-neon-lg transition-all duration-200 border border-neon-red transform hover:-translate-y-0.5">
-            Start Your Project
-        </a>
+    <header>
+        <span class="brand-tag">// BRB PRINTING PROTOCOL //</span>
+        <h1>Precision <span>3D Printing</span> & CAD</h1>
+        <p class="subtitle">Additive manufacturing, 3D scanning, and CAD reverse engineering engineered with toolroom tolerances for maximum strength and precision.</p>
+        <a href="#contact" class="btn">Start Your Project</a>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12 flex-grow w-full">
+    <div class="container">
 
-        <!-- ABOUT & EXPERTISE SECTION -->
-        <section id="about" class="mb-16">
-            <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-2xl font-bold uppercase tracking-wider text-white">Toolroom Precision Meets Modern Additive Tech</h2>
-                <div class="flex-grow h-px bg-gradient-to-r from-neon-red to-transparent"></div>
+        <!-- About Section -->
+        <section id="about">
+            <div class="section-header">
+                <h2>Toolroom Precision Meets Modern Additive Tech</h2>
+                <div class="section-line"></div>
             </div>
 
-            <div class="bg-neon-dark border border-neon-border border-l-4 border-l-neon-red rounded-lg p-6 md:p-10 shadow-2xl transition duration-300 hover:border-red-900">
-                <p class="text-gray-300 text-base md:text-lg mb-4 leading-relaxed">
-                    At <strong class="text-white">BRB Printing</strong>, we bridge the gap between traditional toolroom precision and high-performance additive manufacturing. Backed by formal qualifications as a <strong class="text-white">Red Seal Tool, Jig and Die Maker</strong>, every part produced is designed with real-world mechanical understanding, strict dimensional tolerances, and structural integrity in mind.
-                </p>
-                <p class="text-gray-400 text-base mb-8 leading-relaxed">
-                    Whether you need an obsolete component reverse-engineered from an optical 3D scan, custom shop tooling and press-fit fixtures, or short-run production in technical engineering polymers (ASA, TPU, Carbon-Nylon), we deliver functional, industrial-grade results engineered to perform under demanding conditions.
-                </p>
+            <div class="about-box">
+                <p>At <strong>BRB Printing</strong>, we bridge the gap between traditional toolroom precision and high-performance additive manufacturing. Backed by formal qualifications as a <strong>Red Seal Tool, Jig and Die Maker</strong>, every part produced is designed with real-world mechanical understanding, strict dimensional tolerances, and structural integrity in mind.</p>
+                <p>Whether you need an obsolete component reverse-engineered from an optical 3D scan, custom shop tooling and press-fit fixtures, or short-run production in technical engineering polymers (ASA, TPU, Carbon-Nylon), we deliver functional, industrial-grade results engineered to perform under demanding conditions.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-neon-border">
-                    <div class="bg-black/60 p-5 rounded border border-neon-border hover:border-neon-red transition duration-200">
-                        <h4 class="text-neon-red font-bold text-sm uppercase tracking-wide mb-2">Red Seal Precision</h4>
-                        <p class="text-gray-400 text-xs md:text-sm">Deep knowledge of machining tolerances, mechanical clearances, and toolmaking principles applied directly to 3D builds.</p>
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <h4>Red Seal Precision</h4>
+                        <p>Deep knowledge of machining tolerances, mechanical clearances, and toolmaking principles applied directly to 3D builds.</p>
                     </div>
-                    <div class="bg-black/60 p-5 rounded border border-neon-border hover:border-neon-red transition duration-200">
-                        <h4 class="text-neon-red font-bold text-sm uppercase tracking-wide mb-2">Reverse Engineering</h4>
-                        <p class="text-gray-400 text-xs md:text-sm">High-resolution 3D scanning paired with full CAD reconstruction to recreate or optimize worn and discontinued parts.</p>
+                    <div class="highlight-item">
+                        <h4>Reverse Engineering</h4>
+                        <p>High-resolution 3D scanning paired with full CAD reconstruction to recreate or optimize worn and discontinued parts.</p>
                     </div>
-                    <div class="bg-black/60 p-5 rounded border border-neon-border hover:border-neon-red transition duration-200">
-                        <h4 class="text-neon-red font-bold text-sm uppercase tracking-wide mb-2">Engineering Polymers</h4>
-                        <p class="text-gray-400 text-xs md:text-sm">Specialized processing of technical thermoplastics including ASA, Carbon Composites, TPU 95A, and high-temp materials.</p>
+                    <div class="highlight-item">
+                        <h4>Engineering Polymers</h4>
+                        <p>Specialized processing of technical thermoplastics including ASA, Carbon Composites, TPU 95A, and high-temp materials.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- INDUSTRIES & APPLICATIONS SECTION -->
-        <section id="industries" class="mb-16">
-            <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-2xl font-bold uppercase tracking-wider text-white">Industries & Specialized Applications</h2>
-                <div class="flex-grow h-px bg-gradient-to-r from-neon-red to-transparent"></div>
+        <!-- Industries Section -->
+        <section id="industries">
+            <div class="section-header">
+                <h2>Industries & Specialized Applications</h2>
+                <div class="section-line"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-neon-dark border border-neon-border p-6 rounded-lg transition duration-300 hover:border-neon-red hover:-translate-y-1 shadow-lg">
-                    <h3 class="text-neon-red font-bold text-lg uppercase tracking-wider mb-3">Heavy Transport & Automotive</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Manufacturing specialized aftermarket and OEM-grade components, including custom cosmetic fog light housings tailored for aftermarket front bumpers, durable engine dress items, and critical vehicle accessories.
-                    </p>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <h3>Heavy Transport & Automotive</h3>
+                    <p>Manufacturing specialized aftermarket and OEM-grade components, including custom cosmetic fog light housings tailored for aftermarket front bumpers, durable engine dress items, and critical vehicle accessories.</p>
                 </div>
 
-                <div class="bg-neon-dark border border-neon-border p-6 rounded-lg transition duration-300 hover:border-neon-red hover:-translate-y-1 shadow-lg">
-                    <h3 class="text-neon-red font-bold text-lg uppercase tracking-wider mb-3">Reverse Engineering & Discontinued Parts</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Restoring obsolete or out-of-production automotive and machinery components. We capture original geometry via optical 3D scanning, re-engineer the CAD models, and reproduce optimized parts matching factory specs.
-                    </p>
+                <div class="industry-card">
+                    <h3>Reverse Engineering & Discontinued Parts</h3>
+                    <p>Restoring obsolete or out-of-production automotive and machinery components. We capture original geometry via optical 3D scanning, re-engineer the CAD models, and reproduce optimized parts matching factory specs.</p>
                 </div>
 
-                <div class="bg-neon-dark border border-neon-border p-6 rounded-lg transition duration-300 hover:border-neon-red hover:-translate-y-1 shadow-lg">
-                    <h3 class="text-neon-red font-bold text-lg uppercase tracking-wider mb-3">Custom Air Intake & Fluid Systems</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Designing and 3D printing heat and chemical-resistant intake components, plenum fittings, breather valves, and custom ducting engineered to withstand high under-hood thermal conditions and stress.
-                    </p>
+                <div class="industry-card">
+                    <h3>Custom Air Intake & Fluid Systems</h3>
+                    <p>Designing and 3D printing heat and chemical-resistant intake components, plenum fittings, breather valves, and custom ducting engineered to withstand high under-hood thermal conditions and stress.</p>
                 </div>
 
-                <div class="bg-neon-dark border border-neon-border p-6 rounded-lg transition duration-300 hover:border-neon-red hover:-translate-y-1 shadow-lg">
-                    <h3 class="text-neon-red font-bold text-lg uppercase tracking-wider mb-3">Production Line Tooling & Aids</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Supplying high-wear shop fixtures, alignment jigs, robotic end-effector mounts, and press-fit assembly tooling directly to active production lines to minimize downtime and preserve tolerances.
-                    </p>
+                <div class="industry-card">
+                    <h3>Production Line Tooling & Aids</h3>
+                    <p>Supplying high-wear shop fixtures, alignment jigs, robotic end-effector mounts, and press-fit assembly tooling directly to active production lines to minimize downtime and preserve tolerances.</p>
                 </div>
             </div>
         </section>
 
-        <!-- WORK SHOWCASE GALLERY GRID -->
-        <section id="work" class="mb-16">
-            <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-2xl font-bold uppercase tracking-wider text-white">Capabilities & Work Showcase</h2>
-                <div class="flex-grow h-px bg-gradient-to-r from-neon-red to-transparent"></div>
+        <!-- Work Showcase Grid -->
+        <section id="work">
+            <div class="section-header">
+                <h2>Capabilities & Work Showcase</h2>
+                <div class="section-line"></div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 perspective-container">
+            <div class="grid">
                 
-                <!-- Card 1 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project1.jpg" alt="Functional Engineering Parts" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 1</span>
+                <!-- Project 1 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 1</span>
+                        <img src="project1.jpg" alt="Functional Engineering Parts" class="card-img" onerror="this.style.opacity='0';">
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">Functional End-Use Components</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">High-temp and impact-resistant engineering polymers engineered to exact mechanical tolerances.</p>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project2.jpg" alt="3D Scanning & Reverse Engineering" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 2</span>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">Reverse Engineering & CAD</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">3D scanning and CAD redesign to recreate, optimize, or reproduce discontinued components.</p>
+                    <div class="card-content">
+                        <h3>Functional End-Use Components</h3>
+                        <p>High-temp and impact-resistant engineering polymers engineered to exact mechanical tolerances.</p>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project3.jpg" alt="Rapid Prototyping Batch" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 3</span>
+                <!-- Project 2 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 2</span>
+                        <img src="project2.jpg" alt="3D Scanning & Reverse Engineering" class="card-img" onerror="this.style.opacity='0';">
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">Rapid Prototyping</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Fast-turnaround functional prototypes and short-run production batches.</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project4.jpg" alt="Custom Tooling & Jigs" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 4</span>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">Custom Tooling & Jigs</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Precision manufacturing aids and shop fixtures designed for durability and repetitive use.</p>
+                    <div class="card-content">
+                        <h3>Reverse Engineering & CAD</h3>
+                        <p>3D scanning and CAD redesign to recreate, optimize, or reproduce discontinued components.</p>
                     </div>
                 </div>
 
-                <!-- Card 5 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project5.jpg" alt="Carbon Composite Print" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 5</span>
+                <!-- Project 3 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 3</span>
+                        <img src="project3.jpg" alt="Rapid Prototyping Batch" class="card-img" onerror="this.style.opacity='0';">
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">Carbon Composite Builds</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Carbon-fiber reinforced polymer components offering high structural rigidity and light weight.</p>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project6.jpg" alt="Flexible TPU Part" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 6</span>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">Flexible TPU Seals & Dampers</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Custom elastomeric gaskets, dampeners, and wear-resistant protective covers.</p>
+                    <div class="card-content">
+                        <h3>Rapid Prototyping</h3>
+                        <p>Fast-turnaround functional prototypes and short-run production batches.</p>
                     </div>
                 </div>
 
-                <!-- Card 7 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project7.jpg" alt="Automotive Accessories" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 7</span>
+                <!-- Project 4 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 4</span>
+                        <img src="project4.jpg" alt="Custom Tooling & Jigs" class="card-img" onerror="this.style.opacity='0';">
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">Custom Automotive Components</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">UV and weather-resistant ASA components customized for automotive and transport fittings.</p>
-                    </div>
-                </div>
-
-                <!-- Card 8 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project8.jpg" alt="Precision Threaded Inserts" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 8</span>
-                    </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">Heat-Set Insert Assemblies</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Multi-part functional assemblies fitted with brass heat-set inserts for robust mechanical fastening.</p>
+                    <div class="card-content">
+                        <h3>Custom Tooling & Jigs</h3>
+                        <p>Precision manufacturing aids and shop fixtures designed for durability and repetitive use.</p>
                     </div>
                 </div>
 
-                <!-- Card 9 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project9.jpg" alt="High Temp ASA Print" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 9</span>
+                <!-- Project 5 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 5</span>
+                        <img src="project5.jpg" alt="Carbon Composite Print" class="card-img" onerror="this.style.opacity='0';">
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">High-Temperature Components</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Durable technical prints designed to operate reliably under extreme thermal conditions.</p>
+                    <div class="card-content">
+                        <h3>Carbon Composite Builds</h3>
+                        <p>Carbon-fiber reinforced polymer components offering high structural rigidity and light weight.</p>
                     </div>
                 </div>
 
-                <!-- Card 10 -->
-                <div class="card-3d bg-neon-dark rounded-lg overflow-hidden border border-neon-border">
-                    <img src="project10.jpg" alt="3D Scan to CAD Model" class="w-full h-52 object-cover bg-black border-b border-neon-border" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                    <div class="hidden h-52 bg-neutral-900 border-b border-neon-border flex items-center justify-center p-4 text-center">
-                        <span class="text-neon-red font-bold text-xs uppercase tracking-widest border border-neon-red px-3 py-1.5 rounded bg-neon-red/10">Project 10</span>
+                <!-- Project 6 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 6</span>
+                        <img src="project6.jpg" alt="Flexible TPU Part" class="card-img" onerror="this.style.opacity='0';">
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-white font-bold text-base mb-2">Optical 3D Scanning & Modeling</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">High-resolution mesh capture to solid CAD modeling for accurate component reproduction.</p>
+                    <div class="card-content">
+                        <h3>Flexible TPU Seals & Dampers</h3>
+                        <p>Custom elastomeric gaskets, dampeners, and wear-resistant protective covers.</p>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 7</span>
+                        <img src="project7.jpg" alt="Automotive Accessories" class="card-img" onerror="this.style.opacity='0';">
+                    </div>
+                    <div class="card-content">
+                        <h3>Custom Automotive Components</h3>
+                        <p>UV and weather-resistant ASA components customized for automotive and transport fittings.</p>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 8</span>
+                        <img src="project8.jpg" alt="Precision Threaded Inserts" class="card-img" onerror="this.style.opacity='0';">
+                    </div>
+                    <div class="card-content">
+                        <h3>Heat-Set Insert Assemblies</h3>
+                        <p>Multi-part functional assemblies fitted with brass heat-set inserts for robust mechanical fastening.</p>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 9</span>
+                        <img src="project9.jpg" alt="High Temp ASA Print" class="card-img" onerror="this.style.opacity='0';">
+                    </div>
+                    <div class="card-content">
+                        <h3>High-Temperature Components</h3>
+                        <p>Durable technical prints designed to operate reliably under extreme thermal conditions.</p>
+                    </div>
+                </div>
+
+                <!-- Project 10 -->
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <span class="img-fallback">Project 10</span>
+                        <img src="project10.jpg" alt="3D Scan to CAD Model" class="card-img" onerror="this.style.opacity='0';">
+                    </div>
+                    <div class="card-content">
+                        <h3>Optical 3D Scanning & Modeling</h3>
+                        <p>High-resolution mesh capture to solid CAD modeling for accurate component reproduction.</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- QUOTE REQUEST SECTION -->
-        <section id="contact" class="pt-8">
-            <div class="flex items-center gap-4 mb-6">
-                <h2 class="text-2xl font-bold uppercase tracking-wider text-white">Request a Quote</h2>
-                <div class="flex-grow h-px bg-gradient-to-r from-neon-red to-transparent"></div>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-header">
+                <h2>Request a Quote</h2>
+                <div class="section-line"></div>
             </div>
             
-            <p class="text-gray-400 text-sm mb-8">Have a model ready or need a custom part designed? Send your project details below:</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; text-align: center;">Have a model ready or need a custom part designed? Send your project details below:</p>
             
-            <!-- 3D Holographic Visualizer Area -->
-            <div class="bg-black/80 border border-neon-border rounded-lg p-8 mb-8 relative h-64 flex flex-col justify-center items-center overflow-hidden shadow-2xl">
-                <span class="absolute top-4 left-6 text-neon-red font-bold text-xs tracking-widest uppercase">
-                    // 3D CAD INSPECTION PROTOCOL //
-                </span>
-                <span class="absolute bottom-4 right-6 text-gray-500 text-xs tracking-wider">
-                    AUTOMATED ROTATIONAL SCAN
-                </span>
+            <!-- 3D Holographic Cube Area -->
+            <div class="holo-viewport">
+                <span class="holo-tag">// 3D CAD INSPECTION PROTOCOL //</span>
                 <div class="laser-sweep"></div>
                 
-                <!-- Pure CSS 3D Cube Part Simulation -->
-                <div class="perspective-container flex items-center justify-center">
-                    <div class="cube-wrapper">
-                        <div class="cube-face face-front">BRB</div>
-                        <div class="cube-face face-back">CAD</div>
-                        <div class="cube-face face-right">ASA</div>
-                        <div class="cube-face face-left">TPU</div>
-                        <div class="cube-face face-top">3D</div>
-                        <div class="cube-face face-bottom">RED SEAL</div>
-                    </div>
+                <div class="cube-3d">
+                    <div class="cube-face face-front">BRB</div>
+                    <div class="cube-face face-back">CAD</div>
+                    <div class="cube-face face-right">ASA</div>
+                    <div class="cube-face face-left">TPU</div>
+                    <div class="cube-face face-top">3D</div>
+                    <div class="cube-face face-bottom">RED SEAL</div>
                 </div>
             </div>
 
-            <!-- Formspree Integration Form -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="bg-neon-dark border border-neon-border rounded-lg p-8 max-w-2xl mx-auto shadow-2xl flex flex-col gap-5">
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Your Name / Business</label>
-                    <input type="text" name="name" placeholder="John Doe / Engineering Co." required class="w-full bg-black border border-neon-border text-white p-3.5 rounded text-sm focus:outline-none focus:border-neon-red focus:ring-1 focus:ring-neon-red transition duration-200">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Email Address</label>
-                    <input type="email" name="email" placeholder="john@example.com" required class="w-full bg-black border border-neon-border text-white p-3.5 rounded text-sm focus:outline-none focus:border-neon-red focus:ring-1 focus:ring-neon-red transition duration-200">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Project Specifications</label>
-                    <textarea name="message" rows="5" placeholder="Include material preferences (ASA, Carbon Nylon, TPU), tolerances, quantities, or functional requirements..." required class="w-full bg-black border border-neon-border text-white p-3.5 rounded text-sm focus:outline-none focus:border-neon-red focus:ring-1 focus:ring-neon-red transition duration-200 resize-none"></textarea>
-                </div>
-
-                <button type="submit" class="bg-neon-red text-white py-4 px-6 rounded font-extrabold text-sm uppercase tracking-wider shadow-neon hover:bg-red-700 hover:shadow-neon-lg transition duration-200 mt-2">
-                    Submit Project Specs
-                </button>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="text" name="name" placeholder="Your Name / Business" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <textarea name="message" rows="5" placeholder="Project specs (material preference, quantity, functional requirements)..." required></textarea>
+                <button type="submit">Submit Project Specs</button>
             </form>
         </section>
+    </div>
 
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="py-8 text-center border-t border-neon-border text-gray-500 text-xs">
-        &copy; BRB Printing. All rights reserved. Precision 3D Printing & CAD Engineering.
+    <footer>
+        &copy; BRB Printing. All rights reserved.
     </footer>
 
 </body>
