@@ -42,7 +42,6 @@
             pointer-events: none;
             z-index: 0;
             background: 
-                /* Intersecting Laser Beams */
                 linear-gradient(45deg, transparent 49.5%, var(--neon-red) 49.8%, var(--neon-red) 50.2%, transparent 50.5%),
                 linear-gradient(-45deg, transparent 49.5%, var(--neon-red) 49.8%, var(--neon-red) 50.2%, transparent 50.5%),
                 linear-gradient(15deg, transparent 49.6%, rgba(255, 0, 60, 0.4) 49.9%, rgba(255, 0, 60, 0.4) 50.1%, transparent 50.4%),
@@ -51,7 +50,7 @@
             filter: drop-shadow(0 0 8px var(--neon-red));
         }
 
-        /* Glowing Hexagonal Floor Accent at Bottom */
+        /* Glowing Red Hex Floor Accent */
         body::after {
             content: "";
             position: fixed;
@@ -491,7 +490,7 @@
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 2: Reverse Engineering & CAD -->
                 <div class="card">
                     <img src="project2.jpg" alt="3D Scanning & Reverse Engineering" class="card-img">
                     <div class="card-content">
@@ -502,19 +501,19 @@
 
                 <!-- Project 3 -->
                 <div class="card">
-                    <img src="project3.jpg" alt="Rapid Prototyping Batch" class="card-img">
+                    <img src="project3.jpg" alt="Custom Automotive Accessories" class="card-img">
                     <div class="card-content">
-                        <h3>Rapid Prototyping</h3>
-                        <p>Fast-turnaround functional prototypes and short-run production batches.</p>
+                        <h3>Custom Automotive Components</h3>
+                        <p>UV and weather-resistant ASA components customized for automotive and transport fittings.</p>
                     </div>
                 </div>
 
-                <!-- Project 4 -->
+                <!-- Project 4: Heat-Set Insert Assemblies -->
                 <div class="card">
-                    <img src="project4.jpg" alt="Custom Tooling & Jigs" class="card-img">
+                    <img src="project4.jpg" alt="Precision Threaded Inserts" class="card-img">
                     <div class="card-content">
-                        <h3>Custom Tooling & Jigs</h3>
-                        <p>Precision manufacturing aids and shop fixtures designed for durability and repetitive use.</p>
+                        <h3>Heat-Set Insert Assemblies</h3>
+                        <p>Multi-part functional assemblies fitted with brass heat-set inserts for robust mechanical fastening.</p>
                     </div>
                 </div>
 
@@ -538,19 +537,19 @@
 
                 <!-- Project 7 -->
                 <div class="card">
-                    <img src="project7.jpg" alt="Automotive Accessories" class="card-img">
+                    <img src="project7.jpg" alt="Custom Tooling & Jigs" class="card-img">
                     <div class="card-content">
-                        <h3>Custom Automotive Components</h3>
-                        <p>UV and weather-resistant ASA components customized for automotive and transport fittings.</p>
+                        <h3>Custom Tooling & Jigs</h3>
+                        <p>Precision manufacturing aids and shop fixtures designed for durability and repetitive use.</p>
                     </div>
                 </div>
 
-                <!-- Project 8 -->
+                <!-- Project 8: Optical 3D Scanning & Modeling -->
                 <div class="card">
-                    <img src="project8.jpg" alt="Precision Threaded Inserts" class="card-img">
+                    <img src="project8.jpg" alt="3D Scan to CAD Model" class="card-img">
                     <div class="card-content">
-                        <h3>Heat-Set Insert Assemblies</h3>
-                        <p>Multi-part functional assemblies fitted with brass heat-set inserts for robust mechanical fastening.</p>
+                        <h3>Optical 3D Scanning & Modeling</h3>
+                        <p>High-resolution mesh capture to solid CAD modeling for accurate component reproduction.</p>
                     </div>
                 </div>
 
@@ -563,12 +562,12 @@
                     </div>
                 </div>
 
-                <!-- Project 10 -->
+                <!-- Project 10: Rapid Prototyping -->
                 <div class="card">
-                    <img src="project10.jpg" alt="3D Scan to CAD Model" class="card-img">
+                    <img src="project10.jpg" alt="Rapid Prototyping Batch" class="card-img">
                     <div class="card-content">
-                        <h3>Optical 3D Scanning & Modeling</h3>
-                        <p>High-resolution mesh capture to solid CAD modeling for accurate component reproduction.</p>
+                        <h3>Rapid Prototyping</h3>
+                        <p>Fast-turnaround functional prototypes and short-run production batches.</p>
                     </div>
                 </div>
 
@@ -577,52 +576,4 @@
 
         <!-- Contact Section -->
         <section id="contact" style="margin-top: 5rem;">
-            <div class="section-header">
-                <h2>Request a Quote</h2>
-                <div class="section-line"></div>
-            </div>
-            
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Have a model ready or need a custom part designed? Send your project details below:</p>
-            
-            <!-- Animated 3D Print Nozzle Visual -->
-            <div class="printer-animation-container">
-                <svg class="printer-svg" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Heated Bed Grid Line -->
-                    <line x1="10" y1="100" x2="490" y2="100" stroke="#22222a" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="10" y1="100" x2="490" y2="100" stroke="#ff003c" stroke-width="2" class="bed-laser"/>
-                    
-                    <!-- Extruded Plastic Ribbon -->
-                    <rect x="40" y="95" width="0" height="5" fill="#ff003c" class="animated-line" rx="2"/>
-                    
-                    <!-- Moving Print Head -->
-                    <g class="animated-head">
-                        <!-- Hotend Block -->
-                        <path d="M -20 20 L 20 20 L 15 65 L -15 65 Z" fill="#08080a" stroke="#ff003c" stroke-width="2"/>
-                        <!-- Heatsink Fins -->
-                        <line x1="-18" y1="32" x2="18" y2="32" stroke="#333" stroke-width="2"/>
-                        <line x1="-16" y1="42" x2="16" y2="42" stroke="#333" stroke-width="2"/>
-                        <line x1="-14" y1="52" x2="14" y2="52" stroke="#333" stroke-width="2"/>
-                        <!-- Brass Nozzle Tip -->
-                        <polygon points="-6,65 6,65 0,85" fill="#d97706"/>
-                        <!-- Molten Filament Stream -->
-                        <line x1="0" y1="85" x2="0" y2="95" stroke="#ff003c" stroke-width="3" stroke-linecap="round"/>
-                    </g>
-                </svg>
-            </div>
-
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <input type="text" name="name" placeholder="Your Name / Business" required>
-                <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" rows="5" placeholder="Project specs (material preference, quantity, functional requirements)..." required></textarea>
-                <button type="submit">Submit Project Specs</button>
-            </form>
-        </section>
-
-    </div>
-
-    <footer>
-        &copy; BRB Printing. All rights reserved.
-    </footer>
-
-</body>
-</html>
+            <div class="section-
