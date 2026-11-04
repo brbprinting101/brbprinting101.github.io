@@ -121,7 +121,7 @@
             background: linear-gradient(90deg, var(--neon-red) 0%, transparent 100%);
         }
 
-        /* 3D About Box */
+        /* About Section */
         .about-box {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -187,7 +187,51 @@
             margin-bottom: 0;
         }
 
-        /* 3D Showcase Grid */
+        /* Industries Section */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .industry-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 1.75rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .industry-card:hover {
+            border-color: var(--neon-red);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.15);
+        }
+
+        .industry-card h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .industry-card h3::before {
+            content: "//";
+            color: var(--neon-red);
+            font-weight: 900;
+        }
+
+        .industry-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        /* Showcase Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -245,7 +289,83 @@
             font-size: 0.9rem;
         }
 
-        /* Form Styling */
+        /* Contact & 3D Printing Animation Wrapper */
+        .quote-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .quote-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 3D Printer Animation Stage */
+        .printer-stage {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .printer-stage::before {
+            content: "LIVE SIMULATION // ADDITIVE BUILD";
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--neon-red);
+            letter-spacing: 2px;
+        }
+
+        .printer-svg {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            margin-top: 1.5rem;
+        }
+
+        /* CSS Animation Keyframes */
+        @keyframes movePrinthead {
+            0% { transform: translate(110px, 195px); }
+            25% { transform: translate(250px, 195px); }
+            50% { transform: translate(250px, 135px); }
+            75% { transform: translate(110px, 135px); }
+            100% { transform: translate(110px, 195px); }
+        }
+
+        @keyframes buildUp {
+            0% { height: 10px; y: 240px; opacity: 0.3; }
+            50% { height: 60px; y: 190px; opacity: 0.8; }
+            100% { height: 110px; y: 140px; opacity: 1; }
+        }
+
+        @keyframes laserGlow {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .printhead {
+            animation: movePrinthead 4s infinite linear;
+        }
+
+        .printed-part {
+            animation: buildUp 8s infinite ease-in-out;
+        }
+
+        .laser-point {
+            animation: laserGlow 0.5s infinite alternate;
+        }
+
         form {
             display: grid;
             gap: 1.2rem;
@@ -253,14 +373,7 @@
             padding: 2.5rem;
             border-radius: 8px;
             border: 1px solid var(--card-border);
-            max-width: 650px;
-            margin-top: 1rem;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-            transition: transform 0.3s ease;
-        }
-
-        form:hover {
-            border-color: rgba(255, 0, 60, 0.3);
         }
 
         input, textarea {
@@ -346,6 +459,36 @@
                         <h4>Engineering Polymers</h4>
                         <p>Specialized processing of technical thermoplastics including ASA, Carbon Composites, TPU 95A, and high-temp materials.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries Served Section -->
+        <section id="industries">
+            <div class="section-header">
+                <h2>Industries & Applications Served</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <h3>Commercial Automotive & Transport</h3>
+                    <p>Heavy truck and automotive components—from UV-stable cosmetic trim pieces to high-strength mechanical sub-assemblies engineered for constant vibration and road shock.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h3>Performance Air Intakes</h3>
+                    <p>Custom intake runners, airbox adapters, and high-flow ducting manufactured in chemical and thermal-resistant engineering polymers.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h3>Automation & Production Lines</h3>
+                    <p>End-of-arm tooling, replacement sensor brackets, wire guides, and specialized factory automation components built for continuous operation.</p>
+                </div>
+
+                <div class="industry-card">
+                    <h3>General Fabrication & Tooling</h3>
+                    <p>Custom welding jigs, drill guides, press-fit assembly fixtures, and shop aids tailored specifically to simplify metal fabrication and machining workflows.</p>
                 </div>
             </div>
         </section>
@@ -452,21 +595,68 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact Section with 3D Printer Animation -->
         <section id="contact" style="margin-top: 5rem;">
             <div class="section-header">
                 <h2>Request a Quote</h2>
                 <div class="section-line"></div>
             </div>
             
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">Have a model ready or need a custom part designed? Send your project details below:</p>
-            
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <input type="text" name="name" placeholder="Your Name / Business" required>
-                <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" rows="5" placeholder="Project specs (material preference, quantity, functional requirements)..." required></textarea>
-                <button type="submit">Submit Project Specs</button>
-            </form>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Have a 3D model ready or need a custom mechanical part reverse-engineered? Submit your details below:</p>
+
+            <div class="quote-wrapper">
+                
+                <!-- 3D Printer Interactive Stage -->
+                <div class="printer-stage">
+                    <svg class="printer-svg" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Outer Frame -->
+                        <rect x="20" y="20" width="360" height="280" fill="none" stroke="#262626" stroke-width="4" rx="8"/>
+                        <!-- Z-Axis Motion Rails -->
+                        <line x1="50" y1="30" x2="50" y2="290" stroke="#ff003c" stroke-width="3" opacity="0.4"/>
+                        <line x1="350" y1="30" x2="350" y2="290" stroke="#ff003c" stroke-width="3" opacity="0.4"/>
+                        
+                        <!-- Heated Print Bed Grid -->
+                        <rect x="70" y="250" width="260" height="15" fill="#141414" stroke="#ff003c" stroke-width="2"/>
+                        <line x1="100" y1="250" x2="100" y2="265" stroke="#262626" stroke-width="2"/>
+                        <line x1="150" y1="250" x2="150" y2="265" stroke="#262626" stroke-width="2"/>
+                        <line x1="200" y1="250" x2="200" y2="265" stroke="#262626" stroke-width="2"/>
+                        <line x1="250" y1="250" x2="250" y2="265" stroke="#262626" stroke-width="2"/>
+                        <line x1="300" y1="250" x2="300" y2="265" stroke="#262626" stroke-width="2"/>
+
+                        <!-- Printed Part (Growing animation) -->
+                        <rect class="printed-part" x="140" y="140" width="120" height="110" fill="url(#partGlow)" stroke="#ff003c" stroke-width="2"/>
+
+                        <!-- Extruder Gantry Rail -->
+                        <line x1="50" y1="100" x2="350" y2="100" stroke="#333333" stroke-width="6"/>
+
+                        <!-- Moving Printhead Assembly -->
+                        <g class="printhead">
+                            <rect x="-25" y="-95" width="50" height="40" fill="#1f1f1f" stroke="#ff003c" stroke-width="2" rx="3"/>
+                            <polygon points="-8,-55 8,-55 0,-42" fill="#ff003c"/>
+                            <!-- Laser Nozzle Hotspot -->
+                            <circle class="laser-point" cx="0" cy="-40" r="4" fill="#ffffff"/>
+                            <line x1="0" y1="-40" x2="0" y2="-20" stroke="#ff003c" stroke-width="2" stroke-dasharray="2,2"/>
+                        </g>
+
+                        <!-- Gradient Definition -->
+                        <defs>
+                            <linearGradient id="partGlow" x1="0%" y1="100%" x2="0%" y2="0%">
+                                <stop offset="0%" stop-color="#2b000a"/>
+                                <stop offset="100%" stop-color="#ff003c"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <!-- Form -->
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="text" name="name" placeholder="Your Name / Business" required>
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <textarea name="message" rows="5" placeholder="Project specs (material preference, quantity, functional requirements)..." required></textarea>
+                    <button type="submit">Submit Project Specs</button>
+                </form>
+
+            </div>
         </section>
     </div>
 
