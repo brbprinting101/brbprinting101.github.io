@@ -245,310 +245,62 @@
             font-size: 0.9rem;
         }
 
-        /* 3D Print Nozzle Animation Container */
-        .printer-animation-wrapper {
+        /* 3D Holographic Viewer Styles */
+        .holo-viewport {
             background: #080808;
             border: 1px solid var(--card-border);
             border-radius: 8px;
             padding: 2rem;
             margin-bottom: 2rem;
+            position: relative;
+            height: 260px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
-            position: relative;
             overflow: hidden;
+            perspective: 800px;
+            cursor: grab;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
         }
 
-        .printer-svg {
-            width: 100%;
-            max-width: 500px;
-            height: 120px;
+        .holo-viewport:active {
+            cursor: grabbing;
         }
 
-        /* Keyframe Animations */
-        @keyframes printHeadMove {
-            0% { transform: translateX(40px); }
-            50% { transform: translateX(360px); }
-            100% { transform: translateX(40px); }
-        }
-
-        @keyframes layerGrow {
-            0% { width: 0px; }
-            50% { width: 320px; }
-            100% { width: 0px; }
-        }
-
-        @keyframes laserGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.9; }
-        }
-
-        .print-head {
-            animation: printHeadMove 4s ease-in-out infinite;
-        }
-
-        .printed-line {
-            animation: layerGrow 4s ease-in-out infinite;
-        }
-
-        .laser-line {
-            animation: laserGlow 2s ease-in-out infinite;
-        }
-
-        /* Form Styling */
-        form {
-            display: grid;
-            gap: 1.2rem;
-            background-color: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--card-border);
-            max-width: 650px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-            transition: transform 0.3s ease;
-        }
-
-        form:hover {
-            border-color: rgba(255, 0, 60, 0.3);
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.9rem;
-            border-radius: 4px;
-            border: 1px solid var(--card-border);
-            background-color: #050505;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--neon-red);
-            box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
-            transform: translateY(-2px);
-        }
-
-        button {
-            background-color: var(--neon-red);
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 800;
+        .holo-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 0.75rem;
+            color: var(--neon-red);
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            box-shadow: 0 10px 20px var(--neon-red-glow);
-            transition: all 0.2s ease;
         }
 
-        button:hover {
-            background-color: #d60032;
-            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.6);
-            transform: translateY(-2px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--card-border);
+        .holo-subtag {
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
-    </style>
-</head>
-<body>
 
-    <header>
-        <span class="brand-tag">// BRB PRINTING PROTOCOL //</span>
-        <h1>Precision <span>3D Printing</span> & CAD</h1>
-        <p class="subtitle">Additive manufacturing, 3D scanning, and CAD reverse engineering backed by practical toolroom engineering mastery.</p>
-        <a href="#contact" class="btn">Start Your Project</a>
-    </header>
+        /* 3D Object Assembly */
+        .cube-3d {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(45deg);
+            transition: transform 0.1s linear;
+        }
 
-    <div class="container">
-
-        <!-- About Section -->
-        <section id="about">
-            <div class="section-header">
-                <h2>Toolroom Precision Meets Modern Additive Tech</h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="about-box">
-                <p>At <strong>BRB Printing</strong>, we bridge the gap between traditional toolroom precision and high-performance additive manufacturing. Backed by formal qualifications as a <strong>Red Seal Tool, Jig and Die Maker</strong>, every part produced is designed with real-world mechanical understanding, strict dimensional tolerances, and structural integrity in mind.</p>
-                <p>Whether you need an obsolete component reverse-engineered from an optical 3D scan, custom shop tooling and press-fit fixtures, or short-run production in technical engineering polymers (ASA, TPU, Carbon-Nylon), we deliver functional, industrial-grade results engineered to perform under demanding conditions.</p>
-
-                <div class="highlights-grid">
-                    <div class="highlight-item">
-                        <h4>Red Seal Precision</h4>
-                        <p>Deep knowledge of machining tolerances, mechanical clearances, and toolmaking principles applied directly to 3D builds.</p>
-                    </div>
-                    <div class="highlight-item">
-                        <h4>Reverse Engineering</h4>
-                        <p>High-resolution 3D scanning paired with full CAD reconstruction to recreate or optimize worn and discontinued parts.</p>
-                    </div>
-                    <div class="highlight-item">
-                        <h4>Engineering Polymers</h4>
-                        <p>Specialized processing of technical thermoplastics including ASA, Carbon Composites, TPU 95A, and high-temp materials.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Work Showcase -->
-        <section id="work">
-            <div class="section-header">
-                <h2>Capabilities & Work Showcase</h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="grid">
-                
-                <!-- Project 1 -->
-                <div class="card">
-                    <img src="project1.jpg" alt="Functional Engineering Parts" class="card-img">
-                    <div class="card-content">
-                        <h3>Functional End-Use Components</h3>
-                        <p>High-temp and impact-resistant engineering polymers engineered to exact mechanical tolerances.</p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="card">
-                    <img src="project2.jpg" alt="3D Scanning & Reverse Engineering" class="card-img">
-                    <div class="card-content">
-                        <h3>Reverse Engineering & CAD</h3>
-                        <p>3D scanning and CAD redesign to recreate, optimize, or reproduce discontinued components.</p>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="card">
-                    <img src="project3.jpg" alt="Rapid Prototyping Batch" class="card-img">
-                    <div class="card-content">
-                        <h3>Rapid Prototyping</h3>
-                        <p>Fast-turnaround functional prototypes and short-run production batches.</p>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="card">
-                    <img src="project4.jpg" alt="Custom Tooling & Jigs" class="card-img">
-                    <div class="card-content">
-                        <h3>Custom Tooling & Jigs</h3>
-                        <p>Precision manufacturing aids and shop fixtures designed for durability and repetitive use.</p>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="card">
-                    <img src="project5.jpg" alt="Carbon Composite Print" class="card-img">
-                    <div class="card-content">
-                        <h3>Carbon Composite Builds</h3>
-                        <p>Carbon-fiber reinforced polymer components offering high structural rigidity and light weight.</p>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="card">
-                    <img src="project6.jpg" alt="Flexible TPU Part" class="card-img">
-                    <div class="card-content">
-                        <h3>Flexible TPU Seals & Dampers</h3>
-                        <p>Custom elastomeric gaskets, dampeners, and wear-resistant protective covers.</p>
-                    </div>
-                </div>
-
-                <!-- Project 7 -->
-                <div class="card">
-                    <img src="project7.jpg" alt="Automotive Accessories" class="card-img">
-                    <div class="card-content">
-                        <h3>Custom Automotive Components</h3>
-                        <p>UV and weather-resistant ASA components customized for automotive and transport fittings.</p>
-                    </div>
-                </div>
-
-                <!-- Project 8 -->
-                <div class="card">
-                    <img src="project8.jpg" alt="Precision Threaded Inserts" class="card-img">
-                    <div class="card-content">
-                        <h3>Heat-Set Insert Assemblies</h3>
-                        <p>Multi-part functional assemblies fitted with brass heat-set inserts for robust mechanical fastening.</p>
-                    </div>
-                </div>
-
-                <!-- Project 9 -->
-                <div class="card">
-                    <img src="project9.jpg" alt="High Temp ASA Print" class="card-img">
-                    <div class="card-content">
-                        <h3>High-Temperature Components</h3>
-                        <p>Durable technical prints designed to operate reliably under extreme thermal conditions.</p>
-                    </div>
-                </div>
-
-                <!-- Project 10 -->
-                <div class="card">
-                    <img src="project10.jpg" alt="3D Scan to CAD Model" class="card-img">
-                    <div class="card-content">
-                        <h3>Optical 3D Scanning & Modeling</h3>
-                        <p>High-resolution mesh capture to solid CAD modeling for accurate component reproduction.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" style="margin-top: 5rem;">
-            <div class="section-header">
-                <h2>Request a Quote</h2>
-                <div class="section-line"></div>
-            </div>
-            
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Have a model ready or need a custom part designed? Send your project details below:</p>
-            
-            <!-- 3D Print Animation Visual -->
-            <div class="printer-animation-wrapper">
-                <svg class="printer-svg" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Build Plate Line -->
-                    <line x1="20" y1="100" x2="480" y2="100" stroke="#1f1f1f" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="20" y1="100" x2="480" y2="100" stroke="#ff003c" stroke-width="2" class="laser-line"/>
-                    
-                    <!-- Extruded Layer Line -->
-                    <rect x="60" y="94" width="0" height="6" fill="#ff003c" class="printed-line" rx="2" box-shadow="0 0 10px #ff003c"/>
-                    
-                    <!-- Print Head Group -->
-                    <g class="print-head">
-                        <!-- Hotend Assembly Body -->
-                        <path d="M -20 20 L 20 20 L 15 70 L -15 70 Z" fill="#141414" stroke="#ff003c" stroke-width="1.5"/>
-                        <!-- Heatsink Fins -->
-                        <line x1="-18" y1="32" x2="18" y2="32" stroke="#262626" stroke-width="2"/>
-                        <line x1="-16" y1="42" x2="16" y2="42" stroke="#262626" stroke-width="2"/>
-                        <line x1="-14" y1="52" x2="14" y2="52" stroke="#262626" stroke-width="2"/>
-                        <!-- Brass Nozzle Tip -->
-                        <polygon points="-6,70 6,70 0,88" fill="#d97706"/>
-                        <!-- Extrusion Glow Beam -->
-                        <line x1="0" y1="88" x2="0" y2="94" stroke="#ff003c" stroke-width="3" stroke-linecap="round"/>
-                    </g>
-                </svg>
-            </div>
-
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <input type="text" name="name" placeholder="Your Name / Business" required>
-                <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" rows="5" placeholder="Project specs (material preference, quantity, functional requirements)..." required></textarea>
-                <button type="submit">Submit Project Specs</button>
-            </form>
-        </section>
-    </div>
-
-    <footer>
-        &copy; BRB Printing. All rights reserved.
-    </footer>
-
-</body>
-</html>
+        .cube-face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--neon-red);
+            background: rgba(255, 0, 60, 0.05);
+            box-shadow: inset 0 0 15px rgba(25
