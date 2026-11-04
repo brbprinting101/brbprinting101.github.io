@@ -27,10 +27,11 @@
             color: var(--text-main);
             line-height: 1.6;
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(255, 0, 60, 0.15) 0%, transparent 70%),
+                radial-gradient(circle at 50% 0%, rgba(255, 0, 60, 0.18) 0%, transparent 70%),
                 linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
             background-size: 100% 100%, 40px 40px, 40px 40px;
+            overflow-x: hidden;
         }
 
         header {
@@ -38,6 +39,7 @@
             text-align: center;
             border-bottom: 1px solid var(--card-border);
             position: relative;
+            perspective: 1000px;
         }
 
         .brand-tag {
@@ -48,6 +50,7 @@
             text-transform: uppercase;
             margin-bottom: 1rem;
             display: block;
+            text-shadow: 0 0 10px var(--neon-red-glow);
         }
 
         h1 {
@@ -56,11 +59,12 @@
             letter-spacing: -1px;
             text-transform: uppercase;
             margin-bottom: 0.75rem;
+            transform: translateZ(20px);
         }
 
         h1 span {
             color: var(--neon-red);
-            text-shadow: 0 0 15px var(--neon-red-glow);
+            text-shadow: 0 0 20px var(--neon-red-glow);
         }
 
         .subtitle {
@@ -80,15 +84,16 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 0 20px var(--neon-red-glow);
-            transition: all 0.2s ease;
+            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid var(--neon-red);
+            transform-style: preserve-3d;
         }
 
         .btn:hover {
             background-color: #d60032;
-            box-shadow: 0 0 30px rgba(255, 0, 60, 0.7);
-            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 0, 60, 0.7);
+            transform: translateY(-4px) scale(1.03) translateZ(10px);
         }
 
         .container {
@@ -116,25 +121,96 @@
             background: linear-gradient(90deg, var(--neon-red) 0%, transparent 100%);
         }
 
+        /* 3D About Box */
+        .about-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--neon-red);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .about-box:hover {
+            transform: translateY(-5px) rotateX(2deg) rotateY(-1deg);
+            box-shadow: 0 30px 60px rgba(255, 0, 60, 0.15), 0 0 20px rgba(0,0,0,0.9);
+            border-color: rgba(255, 0, 60, 0.4);
+        }
+
+        .about-box p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-box p strong {
+            color: var(--text-main);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .highlight-item {
+            background: #080808;
+            padding: 1.25rem;
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            border-color: var(--neon-red);
+            transform: translateZ(15px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .highlight-item h4 {
+            color: var(--neon-red);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-item p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* 3D Showcase Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
+            perspective: 1000px;
         }
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 6px;
+            border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--card-border);
-            transition: all 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
             position: relative;
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
         .card:hover {
             border-color: var(--neon-red);
-            box-shadow: 0 0 15px rgba(255, 0, 60, 0.2);
-            transform: translateY(-3px);
+            transform: translateY(-10px) rotateX(4deg) rotateY(-2deg) scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 0, 60, 0.25), 0 0 15px rgba(0, 0, 0, 0.8);
+            z-index: 10;
         }
 
         .card-img {
@@ -144,10 +220,18 @@
             background-color: #111111;
             display: block;
             border-bottom: 1px solid var(--card-border);
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
         }
 
         .card-content {
             padding: 1.25rem;
+            background-color: var(--card-bg);
+            position: relative;
+            z-index: 2;
         }
 
         .card h3 {
@@ -161,15 +245,22 @@
             font-size: 0.9rem;
         }
 
+        /* Form Styling */
         form {
             display: grid;
             gap: 1.2rem;
             background-color: var(--card-bg);
             padding: 2.5rem;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid var(--card-border);
             max-width: 650px;
             margin-top: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease;
+        }
+
+        form:hover {
+            border-color: rgba(255, 0, 60, 0.3);
         }
 
         input, textarea {
@@ -180,13 +271,14 @@
             background-color: #050505;
             color: white;
             font-size: 1rem;
-            transition: border-color 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         input:focus, textarea:focus {
             outline: none;
             border-color: var(--neon-red);
-            box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
+            transform: translateY(-2px);
         }
 
         button {
@@ -200,13 +292,14 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
-            box-shadow: 0 0 15px var(--neon-red-glow);
+            box-shadow: 0 10px 20px var(--neon-red-glow);
             transition: all 0.2s ease;
         }
 
         button:hover {
             background-color: #d60032;
-            box-shadow: 0 0 25px rgba(255, 0, 60, 0.6);
+            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.6);
+            transform: translateY(-2px);
         }
 
         footer {
@@ -223,11 +316,41 @@
     <header>
         <span class="brand-tag">// BRB PRINTING PROTOCOL //</span>
         <h1>Precision <span>3D Printing</span> & CAD</h1>
-        <p class="subtitle">Additive manufacturing, 3D scanning, and CAD reverse engineering engineered for peak strength and accuracy.</p>
+        <p class="subtitle">Additive manufacturing, 3D scanning, and CAD reverse engineering backed by practical toolroom engineering mastery.</p>
         <a href="#contact" class="btn">Start Your Project</a>
     </header>
 
     <div class="container">
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="section-header">
+                <h2>Toolroom Precision Meets Modern Additive Tech</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="about-box">
+                <p>At <strong>BRB Printing</strong>, we bridge the gap between traditional toolroom precision and high-performance additive manufacturing. Backed by formal qualifications as a <strong>Red Seal Tool, Jig and Die Maker</strong>, every part produced is designed with real-world mechanical understanding, strict dimensional tolerances, and structural integrity in mind.</p>
+                <p>Whether you need an obsolete component reverse-engineered from an optical 3D scan, custom shop tooling and press-fit fixtures, or short-run production in technical engineering polymers (ASA, TPU, Carbon-Nylon), we deliver functional, industrial-grade results engineered to perform under demanding conditions.</p>
+
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <h4>Red Seal Precision</h4>
+                        <p>Deep knowledge of machining tolerances, mechanical clearances, and toolmaking principles applied directly to 3D builds.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Reverse Engineering</h4>
+                        <p>High-resolution 3D scanning paired with full CAD reconstruction to recreate or optimize worn and discontinued parts.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Engineering Polymers</h4>
+                        <p>Specialized processing of technical thermoplastics including ASA, Carbon Composites, TPU 95A, and high-temp materials.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Showcase -->
         <section id="work">
             <div class="section-header">
                 <h2>Capabilities & Work Showcase</h2>
@@ -329,6 +452,7 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" style="margin-top: 5rem;">
             <div class="section-header">
                 <h2>Request a Quote</h2>
